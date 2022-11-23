@@ -1,0 +1,158 @@
+/* Fonts */
+
+@font-face {
+    font-family: SourceCodePro;
+    src: url(SourceCodePro.ttf);
+}
+
+* {
+    font-family: SourceCodePro;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/* General */
+
+html, body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    background: #222323;
+    color: #f0f0f6;
+}
+
+/* Classes */
+
+.storeCard {
+    background: #333434;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    width: calc(100% - 20px);
+    height: 60px;
+    margin: 10px;
+    padding: 15px;
+}
+
+.storeCard:hover {
+    background: #444545;
+}
+
+.storeCard:active {
+    background: #333434;
+}
+
+.storeCardLeft {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.storeCardRight {
+    display: flex;
+    justify-content: right;
+    width: 50%;
+}
+
+.storeCardTitle {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.storeCardDesc {
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.storeCardPrice {
+    font-size: 22pt;
+}
+
+.navBarContainer {
+    box-sizing: border-box;
+    width: calc(100% - 20px);
+    height: 60px;
+    margin: 10px 10px 0px 10px;
+    padding: 15px;
+}
+
+.navBarButton {
+    background: #333434;
+    height: 100%;
+}
+
+
+/* Unique IDs */
+
+#mainContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+#leftContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+#rightContainer {
+    background: #1b1b1c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+#counter {
+    font-size: 48pt;
+    font-weight: bold;
+}
+
+#label {
+    font-size: 24pt;
+    margin-bottom: 60px;
+}
+
+#pixel {
+    background: #ef476f;
+    width: 300px;
+    height: 300px;
+    transition: transform 0.1s ease-in, scale 0.1s ease-in;
+}
+
+#pixel:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+    animation: wobble 0.5s ease-out;
+}
+
+#pixel:active {
+    transform: scale(0.95);
+    animation: bounce 0.5s ease-out;
+}
+
+/* Animations */
+@keyframes wobble {
+    0%   { transform: scale(0.98); }
+    25%  { transform: scale(0.92); }
+    50%  { transform: scale(0.96); }
+    75%  { transform: scale(0.93); }
+    100% { transform: scale(0.95); }
+}
+
+@keyframes bounce {
+    0%   { transform: scale(0.95); } 
+    50%  { transform: scale(0.93); } 
+    100% { transform: scale(0.95); } 
+}

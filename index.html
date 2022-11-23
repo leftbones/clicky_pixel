@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Clicky Pixel</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.rawgit.com/erosson/swarm-numberformat/v0.4.0/dist/swarm-numberformat.min.js"></script>
+    </head>
+    <body>
+        <div id="mainContainer">
+            <div id="leftContainer">
+                <div id="counter"></div>
+                <div id="label">clicks</div>
+                <div id="pixel" onmousedown="mouseDown()" onmouseup="mouseUp()"></div>
+            </div>
+            <div id="rightContainer">
+                <table class="navBarContainer">
+                    <tr>
+                        <td class="navBarButton">Store</td>
+                        <td class="navBarButton">Upgrades</td>
+                        <td class="navBarButton">Statistics</td>
+                        <td class="navBarButton">Options</td>
+                        <td class="navBarButton">Debug</td>
+                    </tr>
+                </table>
+                <div class="storeCard">
+                    <div class="storeCardLeft">
+                        <span class="storeCardTitle">Auto Clicker</span>
+                        <span class="storeCardDesc">Clicks once every 10 seconds.</span>
+                    </div>
+                    <div class="storeCardRight">
+                        <span class="storeCardPrice">15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
