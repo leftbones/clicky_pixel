@@ -1,3 +1,5 @@
+import { store } from './store.js';
+
 const colors = [
     "#ef476f",
     "#ff7538",
@@ -11,10 +13,6 @@ const colors = [
 const pixel = document.getElementById('pixel');
 const counter = document.getElementById('counter');
 
-var mouse_down = false;
-var auto_click_int = 30;
-var auto_click_time = 0;
-
 var clicks = 0;
 var click_power = 1;
 
@@ -23,24 +21,72 @@ var click_power = 1;
 window.addEventListener('load', (event) => {
     // pixel.style.background = colors[Math.floor(Math.random() * colors.length)];
     pixel.addEventListener('click', function() { doClick(); });
+
+    updateStore();
 });
 
 
 // Interval + Update
 window.setInterval(function() {
-    if (mouse_down) {
-        if (auto_click_time == auto_click_int) {
-            doClick();
-            auto_click_time = 0;
-        } else {
-            auto_click_time++;
-        }
-    }
     updateCounter();
+    updateStore();
 }, 10);
 
 function updateCounter() {
     counter.innerHTML = numberformat.formatShort(clicks);
+}
+
+function updateStore() {
+    var storeContainer = document.getElementById('storeContainer');
+    for (let i = 0; i < store.length; i++) {
+        var item = store[i];
+
+        if (!item.is_unlocked && item.unlock_req()) {
+            item.is_unlocked = true;
+
+            var storeCard = document.createElement('div');
+            var storeCardLeft = document.createElement('div');
+            var storeCardRight = document.createElement('div');
+            var storeCardTitle = document.createElement('div');
+            var storeCardDesc = document.createElement('div');
+            var storeCardPrice = document.createElement('div');
+
+            storeCard.classList.add('storeCard');
+            storeCardLeft.classList.add('storeCardLeft');
+            storeCardRight.classList.add('storeCardRight');
+            storeCardTitle.classList.add('storeCardTitle');
+            storeCardDesc.classList.add('storeCardDesc');
+            storeCardPrice.classList.add('storeCardPrice');
+
+            storeCardLeft.appendChild(storeCardTitle);
+            storeCardLeft.appendChild(storeCardDesc);
+            storeCardRight.appendChild(storeCardPrice);
+            storeCard.appendChild(storeCardLeft);
+            storeCard.appendChild(storeCardRight);
+
+            storeCardTitle.innerHTML = item.name;
+            storeCardDesc.innerHTML = item.desc;
+            storeCardPrice.innerHTML = item.cost;
+
+            storeCard.addEventListener('click', buyItem(item));
+
+            item.listing = storeCard;
+            
+            storeContainer.appendChild(storeCard);
+        }
+    }
+}
+
+function buyItem(item) {
+    console.log('peen');
+    if (clicks >= item.cost) {
+        item.owned++;
+        item.cost = item.cost * 1.1;
+        clicks -= item.cost;
+        var listingCost = item.listing.getElementById('storeCardCost');
+        listingCost.innerHTML = item.cost;
+        console.log(item.owned);
+    }
 }
 
 
@@ -51,5 +97,4 @@ function doClick() {
     updateCounter();
 }
 
-function mouseDown() { mouse_down = true; }
-function mouseUp() { mouse_down = false; auto_click_time = 0; }
+export { clicks };
