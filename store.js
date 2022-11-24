@@ -28,4 +28,13 @@ var store = [
     clicker, super_clicker
 ];
 
-export { store };
+function restoreSavedStore(loaded_store) {
+    store = loaded_store;
+}
+
+function restoreDefaultStore() {
+    store = [ clicker, super_clicker ];
+    return store;
+}
+
+export { store, restoreSavedStore, restoreDefaultStore };

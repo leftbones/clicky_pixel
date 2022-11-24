@@ -50,13 +50,13 @@ body {
 .storeCardLeft {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
 }
 
 .storeCardRight {
     display: flex;
     justify-content: right;
-    width: 50%;
+    width: 30%;
 }
 
 .storeCardTitle {
@@ -75,7 +75,7 @@ body {
 
 .navBarContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 10px;
     box-sizing: border-box;
     width: calc(100% - 20px);
@@ -125,6 +125,7 @@ body {
 
 #rightContainer {
     background: #1b1b1c;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,6 +165,26 @@ body {
     width: 100%;
     height: 100%;
 }
+
+/* Responsive Layout */
+
+@media (max-width: 1200px) {
+    #leftContainer { width: 50%; }
+    #rightContainer { width: 50%; }
+    #counter { font-size: 32pt; }
+    #label { font-size: 16pt; margin-bottom: 40px; }
+    #pixel { width: 250px; height: 250px; }
+}
+
+@media (max-width: 800px) {
+    #mainContainer { flex-direction: column; }
+    #leftContainer { width: 100%; padding-bottom: 25px; }
+    #rightContainer { width: 100%; }
+    #counter { font-size: 24pt; }
+    #label { font-size: 14pt; margin-bottom: 20px; }
+    #pixel { width: 150px; height: 150px; }
+}
+
 
 /* Animations */
 @keyframes wobble {
